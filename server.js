@@ -9,8 +9,8 @@ app.use(express.json());
 const db = mysql.createConnection(
     {
       host: 'localhost',
-      user: 'root',
-      password: process.env.MYSQL_Password,
+      user: 'uroot',
+      password: 'password1234',
       database: 'employees_db'
     },
     console.log(`Connected to the employee_db database.`)
@@ -32,7 +32,8 @@ function mainMenu() {
             "Update An Employee Role"
         ]
     })
-  } then(function (answer) {
+   
+  .then(function (answer) {
     switch (answer.action) {
         case 'View all employees':
             viewEmployees();
@@ -64,7 +65,8 @@ function mainMenu() {
         default:
             break;
     }
-});
+  })
+};
 
 function viewEmployees() {
   var query = 'SELECT * FROM employee';
@@ -236,5 +238,5 @@ function deleteEmployee() {
 };
 
 function exitApp() {
-connection.end();
+  connection.end();
 };
